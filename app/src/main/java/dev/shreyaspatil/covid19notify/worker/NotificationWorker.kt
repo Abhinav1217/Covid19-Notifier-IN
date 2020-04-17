@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.toList
 import org.koin.core.KoinComponent
 import org.koin.core.get
 import java.text.SimpleDateFormat
+import java.util.*
 
 @ExperimentalCoroutinesApi
 @InternalCoroutinesApi
@@ -88,8 +89,8 @@ class NotificationWorker(
             showNotification(
                 totalDetails.confirmed,
                 getPeriod(
-                    SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
-                        .parse(totalDetails.lastUpdatedTime)
+                    SimpleDateFormat("dd/MM/yyyy HH:mm:ss",  Locale.US)
+                        .parse(totalDetails.lastUpdatedTime!!)!!
                 )
             )
             Log.d(javaClass.simpleName, "Notification Displayed!")
